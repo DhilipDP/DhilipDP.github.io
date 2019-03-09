@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Department Details</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+        
+
+    <style type="text/css">
+        *{
+            font-family: Source Sans Pro,sans-serif;
+        }
+        html{
+            width: 100%;
+            height: 100%;
+            font-family: Source Sans Pro,sans-serif;
+        }
+        #link {
+            margin-top: 10%;
+            font-size: 1.7em;
+        }
+        .extra-width{
+            width: 10%;
+        }
+    </style>
+</head>
+<body style="text-align: center;">
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="contact.html">Academy Details</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="form.html">All Dept</a></li>
+            <li><a href="content.html">Content</a></li>
+            <li><a href="marketing.html">Marketing</a></li>
+            <li><a href="sales.html">Sales</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+        </ul>
+    </div>
+</nav>
+
+<table id="example" class="display" cellspacing="0" width="100%">
+    <h1> Video Department Details </h1>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>E-Mail</th>
+        <th>Phone</th>
+        <th>Institute</th>
+        <th>Course</th>
+        <th class="extra-width">Hours</th>
+        <th class="extra-width">Quotes</th>
+        <th>Adjectives</th>
+        <th class="extra-width">Plague</th>
+        <th class="extra-width">Favourite Thing</th>
+        <th>Kind Or Smart</th>
+        <th class="extra-width">Genie</th>
+        <th>Department Priority</th>
+        <th class="extra-width">Proud Experience</th>
+        <th class="extra-width">Admiring Person</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>E-Mail</th>
+        <th>Phone</th>
+        <th>Institute</th>
+        <th>Course</th>
+        <th>Hours</th>
+        <th>Quotes</th>
+        <th>Adjectives</th>
+        <th>Plague</th>
+        <th>Favourite Thing</th>
+        <th>Kind Or Smart</th>
+        <th>Genie</th>
+        <th>Department Priority</th>
+        <th>Proud Experience</th>
+        <th>Admiring Person</th>
+    </tr>
+    </tfoot>
+</table>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var temp;
+
+        $.ajax({
+            'url': "https://the-lazy-coder.me/form/video/getAll",
+            'method': "GET",
+            'contentType': 'application/json'
+        }).done( function(data) {
+            $('#example').dataTable( {
+		dom: 'Bfrtip',
+		buttons: [
+		    'copy', 'csv', 'excel', 'pdf', 'print'
+		],
+                "scrollX": true,
+                "bSort" : false,
+                "aaData": data,
+                "columns": [
+                    { "data": "name" },
+                    { "data": "age" },
+                    { "data": "email" },
+                    { "data": "phone" },
+                    { "data": "institute"},
+                    { "data": "course"},
+                    { "data": "hours"},
+                    { "data": "quotes"},
+                    { "data": "adjective"},
+                    { "data": "plague"},
+                    { "data": "favourite_thing"},
+                    { "data": "child"},
+                    { "data": "genie"},
+                    { "data": "priority"},
+                    { "data": "proud_experience"},
+                    { "data": "admire"}
+                ]
+            })
+        })
+
+
+    } );
+</script>
+</body>
+</html>
