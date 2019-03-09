@@ -28,23 +28,17 @@
 	<h1> Contact Details </h1>
         <thead>
             <tr>
-                <th>Parent</th>
-                <th>Student</th>
-		<th>Age</th>
-		<th>Phone</th>
-		 <th>E-Mail</th>
-		    <th>Know Us?</th>
+                <th>Name</th>
+                <th>Phone</th>
+		        <th>Page</th>
             </tr>
         </thead>
         <tfoot>
             <tr>
-                <th>Parent</th>
-                <th>Student</th>
-		<th>Age</th>
-		<th>Phone</th>
-		 <th>E-Mail</th>
-		    <th>Know Us?</th>
-            </tr>
+                <th>Name</th>
+                <th>Phone</th>
+		        <th>Page</th>
+		    </tr>
         </tfoot>
     </table>
     <script type="text/javascript">
@@ -57,15 +51,12 @@
     'contentType': 'application/json'
 }).done( function(data) {
     $('#example').dataTable( {
-	    "bSort" : false,
+	    "bSort" : true,
         "aaData": data,
         "columns": [
-             { "data": "parent_name" },
-            { "data": "child_name" },
-		{ "data": "age" },
-		{ "data": "phone" },
-		{ "data": "email" },
-		{"data": "know_us"}
+             { "data": "name" },
+            { "data": "phone" },
+		    { "data": "page" }
         ]
     })
 })
@@ -74,8 +65,7 @@
 } );
     </script>
 
-    	<a href="registration.html" id="link"> Go To Registration Details </a><br><br>
-	<a href="form.html" id="link"> Go To Internship Details </a><br><br>
-	<a href="main_site_contact.html" id="link"> Go To Main Site Contact Details</a>
+    	<a href="academy.html" id="link"> Go to Academy/Growth Page </a><br><br>
+	<a href="summercamp.html" id="link"> Go To Summercamp Page </a><br><br>
 </body>
 </html>
