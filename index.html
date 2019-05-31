@@ -31,6 +31,7 @@
                 <th>Name</th>
                 <th>Phone</th>
 		        <th>Page</th>
+                <th>Created At</th>
             </tr>
         </thead>
         <tfoot>
@@ -38,6 +39,7 @@
                 <th>Name</th>
                 <th>Phone</th>
 		        <th>Page</th>
+                <th>Created At</th>
 		    </tr>
         </tfoot>
     </table>
@@ -46,20 +48,28 @@
     		var temp;
 
     		$.ajax({
-    'url': "https://backend.warhorse.in/user/getAll",
-    'method': "GET",
-    'contentType': 'application/json'
-}).done( function(data) {
-    $('#example').dataTable( {
-	    "bSort" : true,
-        "aaData": data,
-        "columns": [
-             { "data": "name" },
-            { "data": "phone" },
-		    { "data": "page" }
-        ]
-    })
-})
+                'url': "https://backend.warhorse.in/user/getAll",
+                'method': "GET",
+                'contentType': 'application/json'
+            }).done( function(data) {
+
+                $.each(data, function() {
+                    var obj = new Date(this.createdAt);
+                    var B = obj.toUTCString(); 
+                    this.createdAt = B.slice(0,-3);
+                });
+
+                $('#example').dataTable( {
+            	    "bSort" : true,
+                    "aaData": data,
+                    "columns": [
+                         { "data": "name" },
+                        { "data": "phone" },
+            		    { "data": "page" },
+                        {"data": "createdAt"}
+                    ]
+                })
+            })
 
     
 } );
