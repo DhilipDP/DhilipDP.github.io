@@ -48,6 +48,7 @@
         <th>E-Mail</th>
         <th>Phone</th>
         <th>Course</th>
+        <th>Created At</th>
     </tr>
     </thead>
     <tfoot>
@@ -59,6 +60,7 @@
         <th>E-Mail</th>
         <th>Phone</th>
         <th>Course</th>
+        <th>Created At</th>
     </tr>
     </tfoot>
 </table>
@@ -71,6 +73,13 @@
             'method': "GET",
             'contentType': 'application/json'
         }).done( function(data) {
+            
+            $.each(data, function() {
+                var obj = new Date(this.createdAt);
+                var B = obj.toUTCString(); 
+                this.createdAt = B.slice(0,-3);
+            });
+
             $('#example').dataTable( {
 	 	dom: 'Bfrtip',
 		buttons: [
@@ -85,7 +94,8 @@
                     {"data": "location"},
                     { "data": "email" },
                     { "data": "phone" },
-                    { "data": "course"}
+                    { "data": "course"},
+                    { "data" : "createdAt"}
                 ]
             })
         })
