@@ -37,7 +37,7 @@
 </head>
 <body style="text-align: center;">
 
-<table id="example" class="display" cellspacing="0" width="100%">
+<table id="example" class="display nowrap" cellspacing="0" width="100%">
     <h1> Summercamp Details </h1>
     <thead>
     <tr>
@@ -51,6 +51,7 @@
         <th>Schedule</th>
         <th>TimeSlot</th>
         <th>ScheduleType</th>
+        <th>Created At</th>
     </tr>
     </thead>
     <tfoot>
@@ -65,6 +66,7 @@
         <th>Schedule</th>
         <th>TimeSlot</th>
         <th>ScheduleType</th>
+        <th>Created At</th>
     </tr>
     </tfoot>
 </table>
@@ -77,6 +79,13 @@
             'method': "GET",
             'contentType': 'application/json'
         }).done( function(data) {
+
+            $.each(data, function() {
+                var obj = new Date(this.createdAt);
+                var B = obj.toUTCString(); 
+                this.createdAt = B.slice(0,-3);
+            });
+
             $('#example').dataTable( {
 		dom: 'Bfrtip',
 		buttons: [
@@ -94,7 +103,8 @@
                     { "data": "course"},
                     { "data": "schedule"},
                     { "data": "timeslot"},
-                    { "data": "scheduletype"}
+                    { "data": "scheduletype"},
+                    {"data": "createdAt"}
                 ]
             })
         })
