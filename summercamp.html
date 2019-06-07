@@ -73,7 +73,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var temp;
-
+        $.fn.dataTable.ext.errMode = 'none';
         $.ajax({
             'url': "https://backend.warhorse.in/summercamp/getAll",
             'method': "GET",
